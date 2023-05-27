@@ -1,12 +1,16 @@
+require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { celebrate, errors } = require('celebrate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const config = require('./config');
 const { createUser, login } = require('./controllers/user');
 const { signInRules, signUpRules } = require('./validationRules/auth');
 const NotFoundError = require('./errors/NotFoundError');
+
+const { NODE_ENV, PORT } = process.env;
 
 const app = express();
 
@@ -14,6 +18,13 @@ mongoose.connect('mongodb://localhost:27017/mestodb');
 app.use(helmet());
 app.use(express.json());
 app.use(cookieParser());
+app.use(requestLogger());
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signin', celebrate(signInRules), login);
 
@@ -29,7 +40,8 @@ app.use('*', ((req, res, next) => {
   return next(err);
 }));
 
+app.use(errorLogger());
 app.use(errors());
 app.use(require('./middlewares/error'));
 
-app.listen(config.PORT);
+app.listen(NODE_ENV === 'production' ? PORT : config.PORT);

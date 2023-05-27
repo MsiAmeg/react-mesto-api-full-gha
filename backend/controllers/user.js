@@ -5,6 +5,8 @@ const User = require('../models/user');
 const NotFoundError = require('../errors/NotFoundError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 
+const { NODE_ENV, SECRET_KEY } = process.env;
+
 const findByIdHandler = (req, res, next, id) => {
   User.findById({ _id: id })
     .then((user) => {
@@ -93,7 +95,7 @@ const login = (req, res, next) => {
           if (!isValid) {
             throw new UnauthorizedError('login or password incorrect');
           }
-          const token = jwt.sign({ _id: user._id }, config.SECRET_KEY, { expiresIn: '7d' });
+          const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? SECRET_KEY : config.SECRET_KEY, { expiresIn: '7d' });
 
           return res.status(200).cookie('jwt', token, { maxAge: 3600000 * 24 * 7, httpOnly: true }).send({ _id: user._id });
         });
