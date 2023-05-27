@@ -1,0 +1,21 @@
+.unloggined__button {
+    margin: 216px 0 0 0;
+    padding: 0;
+    background-color:  white;
+    color: black;
+    width: 100%;
+    min-height: 50px;
+    cursor: pointer;
+    border: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    border-radius: 2px;
+}
+
+.unloggined__button:hover {
+    opacity: 0.85;
+    transition: .3s ease-in;
+}

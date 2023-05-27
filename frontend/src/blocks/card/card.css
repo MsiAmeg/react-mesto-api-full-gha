@@ -1,0 +1,14 @@
+.card {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    "image"
+    "description";
+  grid-template-rows: 280px 80px;
+  width: 100%;
+  max-width: 360px;
+  max-height: 360px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}

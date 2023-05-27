@@ -1,0 +1,15 @@
+.popup__image_registration {
+    margin: 60px 0 32px;
+    padding: 0;
+    width: 120px;
+    height: 120px;
+    object-position: center;
+    object-fit: contain;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 540px) {
+    .popup__image_registration {
+        margin: 50px 0 40px;
+    }
+}

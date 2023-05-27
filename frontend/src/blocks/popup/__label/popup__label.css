@@ -1,0 +1,22 @@
+.popup__label {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  margin: 0 36px 13px;
+  padding: 0;
+  gap: 5px;
+}
+
+.popup__label:last-of-type {
+  margin: 0 36px 0;
+}
+
+@media screen and (max-width: 540px) {
+  .popup__label {
+    margin: 0;
+  }
+
+  .popup__label:last-of-type {
+    margin: 20px 0 0;
+  }
+}

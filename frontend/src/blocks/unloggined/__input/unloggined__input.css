@@ -1,0 +1,23 @@
+.unloggined__input {
+    width: 100%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 0 0 5px 0;
+    border: 0;
+    border-bottom: 2px solid #CCCCCC;
+    min-height: 27px;
+    box-sizing: border-box;
+    background-color: transparent;
+    color: #CCCCCC;
+    margin: 0;
+}
+
+.unloggined__input:first-of-type {
+    margin: 0 0 30px;
+}
+
+.unloggined__input::placeholder {
+    color: #CCCCCC;
+}

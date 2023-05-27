@@ -1,0 +1,7 @@
+.header__user {
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 40px;
+}

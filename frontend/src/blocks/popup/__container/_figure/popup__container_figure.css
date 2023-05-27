@@ -1,0 +1,13 @@
+.popup__container_figure {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    max-width: 75vw;
+    background-color: transparent;
+    box-sizing: border-box;
+    align-items: flex-start;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+}

@@ -1,0 +1,17 @@
+.unloggined__link {
+    text-decoration:  none;
+    color: white;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 15px 0 0; 
+    padding: 0;
+    cursor: pointer;
+}
+
+.unloggined__link:hover {
+    opacity: 0.6;
+    transition: .3s ease-in;
+}
