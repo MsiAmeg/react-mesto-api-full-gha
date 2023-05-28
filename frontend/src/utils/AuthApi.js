@@ -53,7 +53,7 @@ const authApi = new AuthApi({
     headers: {
       'Content-Type': 'application/json',
       credentials: 'include',
+      cookies: document.cookie.jwt,
     }
   });
-  console.log(document.cookies);
 export default authApi;
