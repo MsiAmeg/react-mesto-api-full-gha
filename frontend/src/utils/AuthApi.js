@@ -51,7 +51,9 @@ class AuthApi {
 const authApi = new AuthApi({
     url: "https://api.rekunir.frontend.nomoredomains.rocks",
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      credentials: 'include',
     }
   });
+  console.log(document.cookies);
 export default authApi;
