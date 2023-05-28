@@ -77,7 +77,7 @@ class Api {
   }
 
 const api = new Api({
-    url: "https://mesto.nomoreparties.co/",
+    url: "https://api.rekunir.frontend.nomoredomains.rocks",
     headers: {
       authorization: "c0e56340-d4b4-40f3-996d-780e6ca9c44e",
       'Content-Type': 'application/json'

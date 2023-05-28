@@ -49,7 +49,7 @@ class AuthApi {
   }
 
 const authApi = new AuthApi({
-    url: "https://auth.nomoreparties.co",
+    url: "https://api.rekunir.frontend.nomoredomains.rocks",
     headers: {
       'Content-Type': 'application/json'
     }
