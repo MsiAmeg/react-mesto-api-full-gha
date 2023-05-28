@@ -18,13 +18,13 @@ class Api {
     }
   
     getInitialCards() {
-      return this._request(`${this._url}v1/${this._cohort}/cards`, {
+      return this._request(`${this._url}/cards`, {
         headers: this._headers
       })
     }
   
     setCard({name, link}){
-      return this._request(`${this._url}v1/${this._cohort}/cards`, {
+      return this._request(`${this._url}/cards`, {
         method: 'POST',
         headers: this._headers,
         body: JSON.stringify({
@@ -35,20 +35,20 @@ class Api {
     }
   
     deleteCard(cardId){
-      return this._request(`${this._url}v1/${this._cohort}/cards/${cardId}`, {
+      return this._request(`${this._url}/cards/${cardId}`, {
         method: 'DELETE',
         headers: this._headers
       })
     }
   
     getUserData(){
-      return this._request(`${this._url}v1/${this._cohort}/users/me`, {
+      return this._request(`${this._url}/users/me`, {
         headers: this._headers
       })
     }
   
     setUserData({name, about}){
-      return this._request(`${this._url}v1/${this._cohort}/users/me`, {
+      return this._request(`${this._url}/users/me`, {
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({
@@ -59,7 +59,7 @@ class Api {
     }
   
     setUserAvatar({avatar}){
-      return this._request(`${this._url}v1/${this._cohort}/users/me/avatar`, {
+      return this._request(`${this._url}/users/me/avatar`, {
         method: 'PATCH',
         headers: this._headers,
         body: JSON.stringify({
@@ -69,7 +69,7 @@ class Api {
     }
   
     toggleLike(cardId, isLiked){
-      return this._request(`${this._url}v1/${this._cohort}/cards/${cardId}/likes`, {
+      return this._request(`${this._url}/cards/${cardId}/likes`, {
         method: isLiked ? 'DELETE' : 'PUT',
         headers: this._headers
       })
