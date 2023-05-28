@@ -20,6 +20,16 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(requestLogger);
 
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+
+  if (config.ALLOWED_CORS.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', '*');
+  }
+
+  next();
+});
+
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');

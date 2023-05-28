@@ -49,7 +49,7 @@ class AuthApi {
   }
 
 const authApi = new AuthApi({
-    url: "https://api.rekunir.frontend.nomoredomains.rocks",
+    url: "http://localhost:3000",
     headers: {
       'Content-Type': 'application/json'
     }
