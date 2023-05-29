@@ -97,7 +97,12 @@ const login = (req, res, next) => {
           }
           const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? SECRET_KEY : config.SECRET_KEY, { expiresIn: '7d' });
 
-          return res.status(200).cookie('jwt', token, { maxAge: 3600000 * 24 * 7, httpOnly: true, sameSite: 'none' }).send({ _id: user._id });
+          return res.status(200).cookie('jwt', token, {
+            maxAge: 3600000 * 24 * 7,
+            httpOnly: true,
+            sameSite: 'none',
+            domain: '.rekunir.frontend.nomoredomains.rocks',
+          }).send({ _id: user._id });
         });
     })
     .catch(next);
