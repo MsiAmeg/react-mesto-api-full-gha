@@ -39,6 +39,13 @@ class AuthApi {
         })
       })
     }
+
+    signOut(){
+      return this._request(`${this._url}/me/signout`, {
+        credentials: 'include',
+        headers: this._headers,
+      })
+    }
   
     validateUserData(){
       return this._request(`${this._url}/users/me`, {

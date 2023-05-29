@@ -9,10 +9,12 @@ const {
   updateUserById,
   updateUserAvatarById,
   getUserMe,
+  signout,
 } = require('../controllers/user');
 
 router.get('/', getUsers);
 router.get('/me', getUserMe);
+router.get('/me/signout', signout);
 
 router.get('/:id', celebrate(userIdRules), getUserById);
 

@@ -61,7 +61,7 @@ function App() {
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api.toggleLike(card._id, isLiked)
       .then((newCard) => {
-        setCards((prevState) => prevState.map((prevCard) => prevCard._id === card._id ? newCard : prevCard));
+        setCards((prevState) => prevState.map((prevCard) => prevCard._id === card._id ? newCard.data : prevCard));
       })
       .catch((err) => {
         console.log(err);
@@ -83,8 +83,8 @@ function App() {
       .then((updatedUser) => {
         setCurrentUser({
           ...currentUser,
-          about: updatedUser.about,
-          name: updatedUser.name
+          about: updatedUser.data.about,
+          name: updatedUser.data.name
         });
         closeAllPopups();
       })
@@ -98,7 +98,7 @@ function App() {
       .then((updatedAvatar) => {
         setCurrentUser({
           ...currentUser,
-          avatar: updatedAvatar.avatar
+          avatar: updatedAvatar.data.avatar
         });
         closeAllPopups();
       })
@@ -110,7 +110,7 @@ function App() {
   const handleAddPlaceSubmit = ({ name, link }) => {
     api.setCard({ name, link })
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([newCard.data, ...cards]);
         closeAllPopups();
       })
       .catch((err) => {
@@ -142,8 +142,14 @@ function App() {
     setLoggedIn(true);
   }
   const signOut = () => {
-    setLoggedIn(false);
-    localStorage.removeItem('jwt');
+    authApi.signOut()
+    .then(res => {
+      setLoggedIn(false);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    //localStorage.removeItem('jwt');
   };
 
   const tokenCheck = () => {
@@ -182,7 +188,6 @@ function App() {
     .then(res => {
         console.log(res);
         userLoggined();
-        localStorage.setItem('jwt', res.token);
         setRegistrationPopup({isOpen: true, success: true, text: 'Вход успешно произведен!'});
         navigate('/', {replace: true});
     })
