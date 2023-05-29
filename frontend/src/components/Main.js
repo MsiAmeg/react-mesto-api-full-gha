@@ -26,7 +26,7 @@ function Main(props) {
                 </section>
                 <section className="cards-grid">
                     {cards.map((card) => {
-                        return <Card isLiked={card.likes.some(i => i._id === currentUser._id)} isOwn={card.owner._id === currentUser._id} onCardDelete={props.onCardDelete} onCardLike={props.onCardLike} onCardClick={props.onCardClick} card={card} key={card._id}/>;
+                        return <Card isLiked={card.likes.some(i => i === currentUser._id)} isOwn={card.owner === currentUser._id} onCardDelete={props.onCardDelete} onCardLike={props.onCardLike} onCardClick={props.onCardClick} card={card} key={card._id}/>;
                     })}
                 </section>
             </main>
