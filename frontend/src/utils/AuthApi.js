@@ -42,6 +42,7 @@ class AuthApi {
 
     signOut(){
       return this._request(`${this._url}/me/signout`, {
+        method: 'POST',
         credentials: 'include',
         headers: this._headers,
       })

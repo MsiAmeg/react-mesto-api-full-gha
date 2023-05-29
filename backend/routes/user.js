@@ -14,7 +14,7 @@ const {
 
 router.get('/', getUsers);
 router.get('/me', getUserMe);
-router.get('/me/signout', signout);
+router.post('/me/signout', signout);
 
 router.get('/:id', celebrate(userIdRules), getUserById);
 
