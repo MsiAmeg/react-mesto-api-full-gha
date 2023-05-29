@@ -100,6 +100,7 @@ const login = (req, res, next) => {
           return res.status(200).cookie('jwt', token, {
             maxAge: 3600000 * 24 * 7,
             httpOnly: true,
+            domain: '.rekunir.frontend.nomoredomains.rocks',
           }).send({ _id: user._id });
         });
     })
