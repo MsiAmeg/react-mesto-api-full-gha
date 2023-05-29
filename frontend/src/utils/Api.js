@@ -19,6 +19,7 @@ class Api {
   
     getInitialCards() {
       return this._request(`${this._url}/cards`, {
+        credentials: 'include',
         headers: this._headers
       })
     }
@@ -43,7 +44,8 @@ class Api {
   
     getUserData(){
       return this._request(`${this._url}/users/me`, {
-        headers: this._headers
+        credentials: 'include',
+        headers: this._headers,
       })
     }
   

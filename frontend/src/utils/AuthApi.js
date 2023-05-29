@@ -19,6 +19,7 @@ class AuthApi {
     registration(password, email) {
       return this._request(`${this._url}/signup`, {
         method: 'POST',
+        credentials: 'include',
         headers: this._headers,
         body: JSON.stringify({
             password,
@@ -30,6 +31,7 @@ class AuthApi {
     signIn(password, email){
       return this._request(`${this._url}/signin`, {
         method: 'POST',
+        credentials: 'include',
         headers: this._headers,
         body: JSON.stringify({
             password,
@@ -40,6 +42,7 @@ class AuthApi {
   
     validateUserData(jwt){
       return this._request(`${this._url}/users/me`, {
+        credentials: 'include',
         headers: {
             "Content-Type": "application/json",
             "Authorization" : `Bearer ${jwt}`
@@ -52,8 +55,6 @@ const authApi = new AuthApi({
     url: "https://api.rekunir.frontend.nomoredomains.rocks",
     headers: {
       'Content-Type': 'application/json',
-      credentials: 'include',
-      cookies: document.cookie.jwt,
     }
   });
 export default authApi;
