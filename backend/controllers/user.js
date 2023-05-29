@@ -96,12 +96,15 @@ const login = (req, res, next) => {
             throw new UnauthorizedError('login or password incorrect');
           }
           const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? SECRET_KEY : config.SECRET_KEY, { expiresIn: '7d' });
+          if (NODE_ENV === 'production') {
+            return res.status(200).cookie('jwt', token, {
+              maxAge: 3600000 * 24 * 7,
+              httpOnly: true,
+              domain: '.rekunir.frontend.nomoredomains.rocks',
+            }).send({ _id: user._id });
+          }
 
-          return res.status(200).cookie('jwt', token, {
-            maxAge: 3600000 * 24 * 7,
-            httpOnly: true,
-            domain: '.rekunir.frontend.nomoredomains.rocks',
-          }).send({ _id: user._id });
+          return res.status(200).cookie('jwt', token, config.COOKIE_OPTIONS).send({ _id: user._id });
         });
     })
     .catch(next);

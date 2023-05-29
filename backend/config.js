@@ -8,6 +8,10 @@ const config = {
     'https://rekunir.frontend.nomoredomains.rocks',
     'http://localhost:3000',
   ],
+  COOKIE_OPTIONS: {
+    maxAge: 3600000 * 24 * 7,
+    httpOnly: false,
+  },
 };
 
 module.exports = config;
