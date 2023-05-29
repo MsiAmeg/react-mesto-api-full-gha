@@ -40,13 +40,10 @@ class AuthApi {
       })
     }
   
-    validateUserData(jwt){
+    validateUserData(){
       return this._request(`${this._url}/users/me`, {
         credentials: 'include',
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization" : `Bearer ${jwt}`
-        }
+        headers: this._headers,
       })
     }
   }

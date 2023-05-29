@@ -22,7 +22,7 @@ function App() {
   const [user, setUser] = useState({email: ''});
   const navigate = useNavigate();
 
-  const [currentUser, setCurrentUser] = useState({ about: '', avatar: '', name: '', _id: '', cohort: ''});
+  const [currentUser, setCurrentUser] = useState({ about: '', avatar: '', name: '', _id: '', });
   const [cards, setCards] = useState([]);
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -44,7 +44,6 @@ function App() {
             avatar: userPromise.avatar,
             name: userPromise.name,
             _id: userPromise._id,
-            cohort: userPromise.cohort
           });
           setCards(cardPromise);
         })
@@ -148,10 +147,9 @@ function App() {
   };
 
   const tokenCheck = () => {
-    const jwt = localStorage.getItem('jwt');
+    //const jwt = localStorage.getItem('jwt');
 
-    if (jwt){
-      authApi.validateUserData(jwt)
+      authApi.validateUserData()
       .then(res => {
         setLoggedIn(true);
         navigate('/', {replace: true});
@@ -161,7 +159,7 @@ function App() {
         console.log(err);
         setLoggedIn(false);
       });
-    }
+    
   }
 
   const handleRegister = (input) => {

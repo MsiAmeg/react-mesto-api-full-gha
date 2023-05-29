@@ -2,7 +2,6 @@ class Api {
     constructor(config){
       this._url = config.url;
       this._headers = config.headers;
-      this._cohort = config.cohort;
     }
 
     _request(url, options) {
@@ -27,6 +26,7 @@ class Api {
     setCard({name, link}){
       return this._request(`${this._url}/cards`, {
         method: 'POST',
+        credentials: 'include',
         headers: this._headers,
         body: JSON.stringify({
           name,
@@ -38,6 +38,7 @@ class Api {
     deleteCard(cardId){
       return this._request(`${this._url}/cards/${cardId}`, {
         method: 'DELETE',
+        credentials: 'include',
         headers: this._headers
       })
     }
@@ -52,6 +53,7 @@ class Api {
     setUserData({name, about}){
       return this._request(`${this._url}/users/me`, {
         method: 'PATCH',
+        credentials: 'include',
         headers: this._headers,
         body: JSON.stringify({
           name,
@@ -63,6 +65,7 @@ class Api {
     setUserAvatar({avatar}){
       return this._request(`${this._url}/users/me/avatar`, {
         method: 'PATCH',
+        credentials: 'include',
         headers: this._headers,
         body: JSON.stringify({
           avatar
@@ -73,6 +76,7 @@ class Api {
     toggleLike(cardId, isLiked){
       return this._request(`${this._url}/cards/${cardId}/likes`, {
         method: isLiked ? 'DELETE' : 'PUT',
+        credentials: 'include',
         headers: this._headers
       })
     }
@@ -81,9 +85,7 @@ class Api {
 const api = new Api({
     url: "https://api.rekunir.frontend.nomoredomains.rocks",
     headers: {
-      authorization: "c0e56340-d4b4-40f3-996d-780e6ca9c44e",
       'Content-Type': 'application/json',
     },
-    cohort: "cohort-60"
   });
 export default api;
