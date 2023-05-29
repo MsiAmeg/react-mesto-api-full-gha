@@ -109,10 +109,7 @@ const login = (req, res, next) => {
 
 const signout = (req, res, next) => {
   try {
-    return res.status(200).clearCookie('jwt', {
-      domain: '.rekunir.frontend.nomoredomains.rocks',
-      path: '/',
-    }).send({ message: 'cookie cleared successful' });
+    return res.status(200).clearCookie('jwt').send({ message: 'cookie cleared successful' });
   } catch (err) {
     return next(err);
   }
