@@ -40,12 +40,12 @@ function App() {
       Promise.all([userPromise, cardPromise])
         .then(([userPromise, cardPromise]) => {
           setCurrentUser({
-            about: userPromise.about,
-            avatar: userPromise.avatar,
-            name: userPromise.name,
-            _id: userPromise._id,
+            about: userPromise.data.about,
+            avatar: userPromise.data.avatar,
+            name: userPromise.data.name,
+            _id: userPromise.data._id,
           });
-          setCards(cardPromise);
+          setCards(cardPromise.data);
         })
         .catch((err) => {
           console.log(err);
