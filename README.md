@@ -23,6 +23,8 @@
 ![mongoose](https://img.shields.io/badge/mongoose-black?style=for-the-badge&logo=mongoose)
 ![Cors](https://img.shields.io/badge/CORS-black?style=for-the-badge)
 
+## Статус: Завершен
+
 ## Запуск проекта:
 1. Клонировать репозиторий.
 2. Установить зависимости.
